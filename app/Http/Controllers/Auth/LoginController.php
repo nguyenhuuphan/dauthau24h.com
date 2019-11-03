@@ -37,25 +37,15 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'logout']);
     }
-
-    public function authenticate(Request $request)
+    public function credentials(Request $request)
     {
-
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 1])) {
-            // Authentication passed...
-            return redirect()->intended('dashboard');
-        } elseif (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 3])) {
-            // Authentication passed...
-            return redirect()->intended('bidder');
-        } else {
-            return redirect()->intended('/');
-        }
+        return [
+            'email' => $request->email,
+            'password' => $request->password,
+            'status' => 1,
+        ];
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
 }

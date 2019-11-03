@@ -60,7 +60,11 @@
         </div>
     </div>
 </div>
-                        @dd(auth()->user())
 
-                        @include('frontend.KH.rate_form')
+@if(Auth::check())
+  @if(Auth::user()->role_id === 2)
+      @include('frontend.KH.rate_form')
+  @endif
+@endif
+
 @endsection

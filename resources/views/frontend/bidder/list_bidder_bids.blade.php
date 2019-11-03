@@ -40,7 +40,7 @@
 		                                <span class="label label-warning">Pending</span>
 		                            @endif
 		                          </td>
-		                          <td class="text-center"><a href="{{ route('detail_bid_frontend', ['bid_id' => $bid->id, 'bidder_id' => $user->id]) }}" class='btn btn-success'><i class='fa fa-list-ul'></i> Detail</a> | <a class="btn btn-primary" href="{{ route('edit_bid_frontend', ['bid_id' => $bid->id, 'bidder_id' => $user->id]) }}"><i class="fa fa-pencil-square-o"></i> Edit</a> | <a class="btn btn-danger" href="{{ route('delete_bid_frontend', ['bid_id' => $bid->id, 'bidder_id' => $user->id]) }}"><i class="fa fa-close"></i> Delete</a></td>
+		                          <td class="text-center"><a href="{{ route('detail_bid_frontend', $bid->id) }}" class='btn btn-success'><i class='fa fa-list-ul'></i> Detail</a> | <a class="btn btn-primary" href="{{ route('edit_bid_frontend', $bid->id) }}"><i class="fa fa-pencil-square-o"></i> Edit</a> | <a class="btn btn-danger" href="{{ route('delete_bid_frontend', $bid->id) }}"><i class="fa fa-close"></i> Delete</a></td>
 		                        </tr>
 		                    @endforeach
 		                @endif

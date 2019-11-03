@@ -30,7 +30,7 @@
 		                          <td>{{ $bid->id }}</td>
 		                          <td>{{ $bid->title }}</td>
 		                          <td>{{ $bid->user['name'] }}</td>
-		                          <td class="text-center"><a href="{{ route('KH_detail_bid_frontend', $bid->id) }}" class='btn btn-success'><i class='fa fa-list-ul'></i> Detail</a></td>
+		                          <td class="text-center"><a href="{{ route('detail_bid_frontend', $bid->id) }}" class='btn btn-success'><i class='fa fa-list-ul'></i> Detail</a></td>
 		                        </tr>
 		                    @endforeach
 		                @endif

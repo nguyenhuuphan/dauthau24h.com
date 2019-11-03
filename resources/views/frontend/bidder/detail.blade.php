@@ -54,7 +54,7 @@
                               </td>
                             </tr>
                               <th class="text-left">Action</th>
-                              <td><a class="btn btn-primary" href="{{ route('edit_bid_frontend', ['bid_id' => $bid->id, 'bidder_id' => $user->id]) }}"><i class="fa fa-pencil-square-o"></i> Edit</a> | <a class="btn btn-danger" href="{{ route('delete_bid_frontend', ['bid_id' => $bid->id, 'bidder_id' => $user->id]) }}"><i class="fa fa-close"></i> Delete</a></td>
+                              <td><a class="btn btn-primary" href="{{ route('edit_bid_frontend', $bid->id) }}"><i class="fa fa-pencil-square-o"></i> Edit</a> | <a class="btn btn-danger" href="{{ route('delete_bid_frontend', $bid->id) }}"><i class="fa fa-close"></i> Delete</a></td>
                             </tr>
                           </table>
 

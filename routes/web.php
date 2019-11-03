@@ -11,73 +11,70 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
 
-Route::middleware(['admin'])->group(function() {
-	Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+
+Route::middleware(['admin', 'approved'])->group(function() {
+	Route::get('/dashboard', 'Admin\AdminController@index')->name('dashboard');
 	Route::get('/dashboard/users', 'Admin\UserController@index')->name('list_users');
-	Route::get('/dashboard/users/create', 'UserController@create')->name('add_user');
-	Route::get('/dashboard/users/store', 'UserController@store')->name('store_user');
-	Route::get('/dashboard/users/delete/{id}', 'UserController@delete')->name('delete_user');
-	Route::get('/dashboard/users/edit/{id}', 'UserController@edit')->name('edit_user');
-	Route::get('/dashboard/users/update/{id}', 'UserController@update')->name('update_user');
-	Route::get('/dashboard/users/bids/{id}', 'UserController@listBids')->name('list_bids');
+	Route::get('/dashboard/users/create', 'Admin\UserController@create')->name('add_user');
+	Route::get('/dashboard/users/store', 'Admin\UserController@store')->name('store_user');
+	Route::get('/dashboard/users/delete/{id}', 'Admin\UserController@delete')->name('delete_user');
+	Route::get('/dashboard/users/edit/{id}', 'Admin\UserController@edit')->name('edit_user');
+	Route::get('/dashboard/users/update/{id}', 'Admin\UserController@update')->name('update_user');
+	Route::get('/dashboard/users/bids/{id}', 'Admin\UserController@listBids')->name('list_bids');
+
+	Route::get('/dashboard/bids', 'Admin\BidsController@index')->name('list_all_bids');
+	Route::get('/dashboard/bids/delete/{id}', 'Admin\BidsController@delete')->name('delete_bid');
+	Route::get('/dashboard/bids/detail/{id}', 'Admin\BidsController@detail')->name('detail_bid');
+	Route::get('/dashboard/bids/edit/{id}', 'Admin\BidsController@edit')->name('edit_bid');
+	Route::get('/dashboard/bids/update/{id}', 'Admin\BidsController@update')->name('update_bid');
+
+	Route::get('/dashboard/rate', 'Admin\RateController@index')->name('list_rates');
+	Route::get('/dashboard/rate/delete/{id}', 'Admin\RateController@delete')->name('delete_rate');
 });
 
-Route::middleware(['auth'])->group(function() {
 
+Route::middleware(['approved', 'bidder'])->group(function() {
+	Route::get('/bidder', 'Frontend\UserController@index')->name('user_dashboard');
+	Route::get('/bidder/bids', 'Frontend\BidderController@listBidderBids')->name('list_bidder_bids');
+	Route::get('/bidder/bids/create', 'Frontend\BidderController@create')->name('create_bid');
+	Route::get('/bidder/bids/store', 'Frontend\BidderController@store')->name('store_bid');
+	Route::get('/bidder/bids/detail/{id}', 'Frontend\BidderController@detail')->name('detail_bid_frontend');
+	Route::get('/bidder/bids/edit/{id}', 'Frontend\BidderController@edit')->name('edit_bid_frontend');
+	Route::get('/bidder/bids/update/{id}', 'Frontend\BidderController@update')->name('update_bid_frontend');
+	Route::get('/bidder/bids/delete/{id}', 'Frontend\BidderController@delete')->name('delete_bid_frontend');
+});
+
+
+Route::middleware(['auth', 'approved'])->group(function() {
+	Route::get('/user', 'Frontend\UserController@index')->name('user_dashboard');
+	Route::get('/user/edit', 'Frontend\UserController@editProfile')->name('edit_profile');
+	Route::get('/user/update', 'Frontend\UserController@updateProfile')->name('update_profile');
+	Route::get('/user/rates', 'Frontend\RatesController@listRate')->name('user_rates');
+	Route::get('/user/rates/delete/{id}', 'Frontend\RatesController@deleteFrontend')->name('delete_rate_frontend');
+	Route::get('/user/rating', 'Frontend\RatesController@createRating')->name('create_rating');
+
+});
+
+
+
+	Route::get('/', 'HomeController@index')->name('home');
 	Route::get('/approval', 'HomeController@approval')->name('approval');
 
-    Route::middleware(['approved'])->group(function () {
-
-		// Route::get('/dashboard', 'AdminController@index')->name('dashboard');
-
-		Route::get('/bidder', 'BidderController@index')->name('bidder');
-		Route::get('/bidder/bids/{bidder_id}', 'BidderController@listBidderBids')->name('list_bidder_bids');
-
-    });
-
-
-	// Route::get('/dashboard/users', 'UserController@index')->name('list_users');
-
-
-	Route::get('/dashboard/bids', 'BidsController@index')->name('list_all_bids');
-	Route::get('/dashboard/bids/delete/{id}', 'BidsController@delete')->name('delete_bid');
-	Route::get('/dashboard/bids/detail/{id}', 'BidsController@detail')->name('detail_bid');
-	Route::get('/dashboard/bids/edit/{id}', 'BidsController@edit')->name('edit_bid');
-	Route::get('/dashboard/bids/update/{id}', 'BidsController@update')->name('update_bid');
-
-
-	Route::get('/dashboard/rate', 'RatesController@index')->name('list_rates');
-	Route::get('/dashboard/rate/delete/{id}', 'RatesController@delete')->name('delete_rate');
+	Route::get('/bids', 'Frontend\BidsController@index')->name('list_bids_frontend');
+	Route::get('/bids/detail/{id}', 'Frontend\BidsController@detail')->name('detail_bid_frontend');
+	Route::get('/bids/rate', 'Frontend\BidsController@KHdetailFrontend')->name('KH_detail_bid_frontend');
 
 
 
-	Route::get('/bids/create/{bidder_id}', 'BidsController@create')->name('create_bid');
-	Route::get('/bids/store/{bidder_id}', 'BidsController@store')->name('store_bid');
-	Route::get('/bids/detail/{id}/{bidder_id}', 'BidsController@detailFrontend')->name('detail_bid_frontend');
-	Route::get('/bids/edit/{bid_id}/{bidder_id}', 'BidsController@editFrontend')->name('edit_bid_frontend');
-	Route::get('/bids/update/{id}/{bidder_id}', 'BidsController@updateFrontend')->name('update_bid_frontend');
-	Route::get('/bids/delete/{id}/{bidder_id}', 'BidsController@deleteFrontend')->name('delete_bid_frontend');
 
 
-	Route::get('/bids', 'BidsController@KHlistBidsFrontend')->name('KH_list_bids_frontend');
-	Route::get('/bids/detail/{id}', 'BidsController@KHdetailFrontend')->name('KH_detail_bid_frontend');
-	Route::get('/bids/rate', 'BidsController@KHdetailFrontend')->name('KH_detail_bid_frontend');
 
 
-	Route::get('/user/edit/{id}', 'UserController@editProfile')->name('edit_profile');
-	Route::get('/user/update/{id}', 'UserController@updateProfile')->name('update_profile');
 
 
-	Route::get('/user/rates/{user_id}', 'RatesController@listRate')->name('user_rates');
-	Route::get('/user/rates/delete/{rate_id}/{user_id}', 'RatesController@deleteFrontend')->name('delete_rate_frontend');
-	Route::get('/user/rating', 'RatesController@createRating')->name('create_rating');
 
-});
+

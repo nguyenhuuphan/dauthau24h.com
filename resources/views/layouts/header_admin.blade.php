@@ -169,7 +169,9 @@
 		      </div>
 		      <ul class="sidebar-menu" data-widget="tree">
 		        <li class="active"><a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-		        <li><a href="/dashboard/users"><i class="fa fa-user-o"></i> Users</a></li>
+		        <li><a href="{{ route('list_users') }}"><i class="fa fa-user-o"></i> Users</a></li>
+		        <li><a href="{{ route('list_all_bids') }}"><i class="fa fa-list-ul"></i> Bids</a></li>
+		        <li><a href="{{ route('list_rates') }}"><i class="fa fa-star-o"></i> Rate</a></li>
  		        <!-- <li class="treeview active">
 		          <a href="#">
 		            <i class="fa fa-files-o"></i>

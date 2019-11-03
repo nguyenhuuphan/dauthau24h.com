@@ -1,4 +1,4 @@
-@include('layouts.header_test')
+@include('layouts.header_admin')
 
 		<div class="content-wrapper">
 		    @yield('content')

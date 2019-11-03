@@ -16,7 +16,7 @@
 
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('KH_list_bids_frontend') }}">Bid Packages</a></li>
+                        <li><a href="{{ route('list_bids_frontend') }}">Bid Packages</a></li>
                     </ul>
                 </div>
             </div>

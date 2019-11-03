@@ -66,5 +66,12 @@ class UserController extends Controller
         $user->save();
 		return redirect()->route('list_users');
     }
+    
+    public function listBids($id)
+    {
+    	$user = User::find($id);
+    	$bids = $user->bids;
+    	return view('backend.users.list_bids', compact('bids', 'user'));
+    }
 
 }

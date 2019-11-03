@@ -15,7 +15,7 @@
                     @endif
                     
 
-      <form class="form-horizontal" method="PUT" action="{{ route('update_bid_frontend', ['bid_id' => $bid->id, 'bidder_id' => $bidder_id]) }}" >
+      <form class="form-horizontal" method="PUT" action="{{ route('update_bid_frontend', $bid->id) }}" >
         @csrf
         <div class="box-body">
           <div class="form-group row">

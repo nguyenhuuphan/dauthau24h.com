@@ -28,7 +28,15 @@
                                       <td>{{ Auth::user()->email }}</td>
                                     </tr>
                                       <th class="text-left">Action</th>
-                                      <td><a class="btn btn-primary" href="{{ route('edit_profile', Auth::user()->id) }}"><i class="fa fa-pencil-square-o"></i> Update Profile</a> | <a class="btn btn-success" href="{{ route('create_bid', ['bidder_id' => Auth::user()->id ])  }}"><i class="fa fa-close"></i> Create Bid Package</a> | <a class="btn btn-primary" href="{{ route('list_bidder_bids', ['bidder_id' => Auth::user()->id ])  }}"><i class="fa fa-close"></i> Bid Packages</a> | <a class="btn btn-success" href="{{ route('user_rates', Auth::user()->id) }}"><i class="fa fa-close"></i> Rates</a></td>
+                                      <td>
+                                        {{-- <a class="btn btn-primary" href="{{ route('edit_profile') }}"><i class="fa fa-pencil-square-o"></i> Update Profile</a> --}}
+                                         | 
+                                         <a class="btn btn-success" href="{{ route('create_bid') }}"><i class="fa fa-close"></i> Create Bid Package</a>
+                                          | 
+                                          <a class="btn btn-primary" href="{{ route('list_bidder_bids')  }}"><i class="fa fa-close"></i> Bid Packages</a>
+                                           | 
+                                           <a class="btn btn-success" href="{{ route('user_rates') }}"><i class="fa fa-close"></i> Rates</a>
+                                      </td>
                                     </tr>
                                   </table>
 

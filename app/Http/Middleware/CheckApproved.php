@@ -16,8 +16,12 @@ class CheckApproved
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->approved_at) {
-            return redirect()->route('approval');
+        if(Auth::check()){
+            if (Auth::user()->status == 0) {
+                return redirect()->route('approval');
+            }
+        } else {
+             return redirect()->route('login');
         }
 
         return $next($request);

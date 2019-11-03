@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create Bid For Bidder {{ $bidder_id }}</div>
+                <div class="card-header">Create Bid For Bidder {{ Auth::user()->name }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -19,7 +19,7 @@
 
                         <div class="box">
                             <div class="box-body table-responsive no-padding">
-                              <form class="form-horizontal" method="PUT" action="{{ route('store_bid', $bidder_id) }}" >
+                              <form class="form-horizontal" method="PUT" action="{{ route('store_bid') }}" >
                                 @csrf
 
                                   <table class="table table-hover">

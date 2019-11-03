@@ -34,7 +34,7 @@
 							      <td>{{ $rat->content }}</td>
 							      <td>{{ $rat->rating }}</td>
 							      <td>{{ $rat->target['name'] }}</td>
-							      <td class="text-center"><a class="btn btn-danger" href="{{ route('delete_rate_frontend', ['rate_id' => $rat->id, 'user_id' => $rat->author_id]) }}"><i class="fa fa-close"></i> Delete</a></td>
+							      <td class="text-center"><a class="btn btn-danger" href="{{ route('delete_rate_frontend', $rat->id) }}"><i class="fa fa-close"></i> Delete</a></td>
 							    </tr>
 		            		@endforeach
 		            	@endif
@@ -42,34 +42,34 @@
 
 		              </table>
 		            </div>
-
-					<div class="box-header">
-					  <h3 class="box-title">Rating By</h3>
-					</div>
-		            <div class="box-body table-responsive no-padding">
-		              <table class="table table-hover">
-					    <tr>
-					      <th>ID</th>
-					      <th>Content</th>
-					      <th>Rate</th>
-					      <th>Author</th>
-					      <th class="text-center"></th>
-					    </tr>
-		            	@if($rateby)
-		            		@foreach($rateby as $rat)
+							<div class="box-header">
+							  <h3 class="box-title">Rating By</h3>
+							</div>
+				            <div class="box-body table-responsive no-padding">
+				              <table class="table table-hover">
 							    <tr>
-							      <td>{{ $rat->id }}</td>
-							      <td>{{ $rat->content }}</td>
-							      <td>{{ $rat->rating }}</td>
-							      <td>{{ $rat->author['name'] }}</td>
-							      <td style="opacity: 0;" class="text-center"><a style="cursor: auto" class="btn btn-danger"><i class="fa fa-close"></i> Delete</a></td>
+							      <th>ID</th>
+							      <th>Content</th>
+							      <th>Rate</th>
+							      <th>Author</th>
+							      <th class="text-center"></th>
 							    </tr>
-		            		@endforeach
-		            	@endif
+				            	@if($rateby)
+				            		@foreach($rateby as $rat)
+									    <tr>
+									      <td>{{ $rat->id }}</td>
+									      <td>{{ $rat->content }}</td>
+									      <td>{{ $rat->rating }}</td>
+									      <td>{{ $rat->author['name'] }}</td>
+									      <td style="opacity: 0;" class="text-center"><a style="cursor: auto" class="btn btn-danger"><i class="fa fa-close"></i> Delete</a></td>
+									    </tr>
+				            		@endforeach
+				            	@endif
 
 
-		              </table>
-		            </div>
+				              </table>
+				            </div>
+
 
                 </div>
             </div>

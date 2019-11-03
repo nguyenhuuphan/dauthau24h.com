@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@dd(Auth::user())
+{{-- @dd(Auth::user()) --}}
     <div class="justify-content-center">
 
 		<div class="box">
