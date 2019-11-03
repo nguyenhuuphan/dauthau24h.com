@@ -1,0 +1,63 @@
+table {
+	width: 100%;
+	border: 1px solid gray;
+}
+
+th {
+	border: 1px solid #E2E2E2;
+}
+
+
+th, td {
+	padding: 5px;
+	vertical-align: top
+}
+
+thead tr {
+	background: #eee
+}
+
+tbody tr {
+	border: 1px solid #eee;
+	background: #f6f6f6
+}
+
+div.name img {
+	width: 40px;
+	height: 40px;
+}
+
+h3 {
+	display: inline-block;
+}
+
+.add-new-button {
+	display: inline-block;
+	padding: 10px;
+	background: #f6f6f6;
+	border: 1px solid #eee;
+	color: black
+}
+
+.add-new-button:hover {
+	background: #0073aa;
+	color: #f6f6f6;
+}
+
+.action a:first-child {
+	padding-right: 5px;
+	border-right: 1px solid gray;
+}
+
+/*=========================USER=================*/
+
+#user-profile .user-avatar, #user-profile .user-info {
+	display: inline-block;
+	float: left;
+}
+
+#user-profile .user-info {
+	padding: 25px;
+	font-size: 18px;
+	font-weight: 500;
+}
