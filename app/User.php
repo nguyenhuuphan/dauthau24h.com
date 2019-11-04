@@ -29,6 +29,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Rate', 'id', 'target_id');
     }
+    public function placeBids()
+    {
+        return $this->hasMany('App\placeBid', 'author_id', 'id');
+    }
 
     /**
      * The attributes that are mass assignable.

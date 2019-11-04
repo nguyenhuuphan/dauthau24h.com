@@ -38,6 +38,12 @@
 	                                        @endif
                                            | 
                                         <a class="btn btn-success" href="{{ route('user_rates') }}"><i class="fa fa-close"></i> Rates</a>
+
+                                        @if(Auth::user()->role_id === 1)
+                                           | 
+                                          <a class="btn btn-primary" href="{{ route('dashboard') }}"><i class="fa fa-pencil-square-o"></i> Admin Dashboard</a>
+                                        @endif
+
                                       </td>
                                     </tr>
                                   </table>

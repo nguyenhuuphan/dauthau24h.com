@@ -16,7 +16,7 @@ Auth::routes();
 
 
 
-Route::middleware(['admin', 'approved'])->group(function() {
+Route::middleware(['approved', 'admin'])->group(function() {
 	Route::get('/dashboard', 'Admin\AdminController@index')->name('dashboard');
 	Route::get('/dashboard/users', 'Admin\UserController@index')->name('list_users');
 	Route::get('/dashboard/users/create', 'Admin\UserController@create')->name('add_user');
@@ -55,7 +55,9 @@ Route::middleware(['auth', 'approved'])->group(function() {
 	Route::get('/user/update', 'Frontend\UserController@updateProfile')->name('update_profile');
 	Route::get('/user/rates', 'Frontend\RatesController@listRate')->name('user_rates');
 	Route::get('/user/rates/delete/{id}', 'Frontend\RatesController@deleteFrontend')->name('delete_rate_frontend');
-	Route::get('/user/rating', 'Frontend\RatesController@createRating')->name('create_rating');
+	Route::get('/user/rating/{id}', 'Frontend\RatesController@createRating')->name('user_rating');
+
+	Route::get('/bids/bid/{id}', 'Frontend\BidController@store')->name('store_bid_frontend');
 
 });
 

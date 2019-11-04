@@ -47,5 +47,9 @@ class LoginController extends Controller
             'status' => 1,
         ];
     }
+    protected function guard()
+    {
+        return Auth::guard('web');
+    }
 
 }

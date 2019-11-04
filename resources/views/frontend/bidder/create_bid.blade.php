@@ -43,7 +43,7 @@
                                       <td colspan="2"><button type="submit" class="btn btn-info pull-right">Create</button></td>
                                     </tr>
                                   </table>
-                                </form>
+                              </form>
 
                             </div>
                         </div>

@@ -25,13 +25,14 @@ class RatesController extends Controller
     	return redirect()->route('user_rates');
     }
 
-    public function createRating()
+    public function createRating(Request $request, $id)
     {
-        return view('frontend.KH.rate_form');
-    }
-
-    public function storeRating()
-    {
-
+        Rate::create([
+            'target_id' => $id,
+            'content' => $request->content,
+            'author_id' => Auth::user()->id,
+            'rating' => $request->rating,
+        ]);
+        return redirect()->route('user_rates');
     }
 }

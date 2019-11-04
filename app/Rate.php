@@ -15,4 +15,7 @@ class Rate extends Model
     {
     	return $this->hasOne('App\User', 'id', 'target_id');
     }
+    protected $fillable = [
+        'target_id', 'content', 'author_id', 'rating'
+    ];
 }

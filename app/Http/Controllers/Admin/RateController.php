@@ -9,8 +9,7 @@ use App\Rate;
 class RateController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth:admin');
-    	$this->middleware('admin');
+        $this->middleware('auth:web');
     }
     public function index()
     {
